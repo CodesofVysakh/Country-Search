@@ -42,9 +42,9 @@ function Countries() {
     }, []);
 
     return (
-            isLoading ?
-            <div>Loading...</div>
-            :
+            // isLoading ?
+            // <div>Loading...</div>
+            // :
             <div style={{ 
                 width: "90%", 
                 margin: "30px auto",
