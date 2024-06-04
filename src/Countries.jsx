@@ -37,7 +37,7 @@ function Countries() {
             })
             .catch((err) => {
                 setIsLoading(false);
-                console.log(err);
+                console.error(err);
             });
     }, []);
 
