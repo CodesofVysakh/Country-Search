@@ -26,31 +26,47 @@ const CountryCard = ({ name, flagImage, flagAlt }) => (
 
 function Countries() {
     const [countries, setCountries] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch("https://restcountries.com/v3.1/all")
             .then((res) => res.json())
-            .then((data) => setCountries(data))
-            .catch((err) => console.log(err));
+            .then((data) => {
+                setIsLoading(false);
+                setCountries(data);
+            })
+            .catch((err) => {
+                setIsLoading(false);
+                console.log(err);
+            });
     }, []);
 
     return (
-        <div style={{ 
-            width: "90%", 
-            margin: "30px auto",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexWrap: 'wrap'
-            }}>
-            {countries.map((country) => (
-                <CountryCard
-                    name={country.name.common}
-                    flagImage={country.flags.png}
-                    flagAlt={country.flags.alt}
-                />
-            ))}
-        </div>
+            isLoading ?
+            <div>Loading...</div>
+            :
+            <div style={{ 
+                width: "90%", 
+                margin: "30px auto",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexWrap: 'wrap'
+                }}>
+                {
+                    countries.length > 0 ?
+                        countries.map((country) => (
+                            <CountryCard
+                                name={country.name.common}
+                                flagImage={country.flags.png}
+                                flagAlt={country.flags.alt}
+                            />
+                        ))
+                        :
+                        <div>No data</div>
+                }
+            </div>
+
     );
 }
 
