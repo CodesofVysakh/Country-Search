@@ -12,7 +12,7 @@ const CountryCard = ({ name, flagImage, flagAlt }) => (
             width: "200px",
             border: "1px solid black",
             borderRadius: "8px",
-            margin: '10px'
+            margin: "10px",
         }}
     >
         <img
@@ -42,31 +42,27 @@ function Countries() {
     }, []);
 
     return (
-            // isLoading ?
-            // <div>Loading...</div>
-            // :
-            <div style={{ 
-                width: "90%", 
+        // isLoading ?
+        // <div>Loading...</div>
+        // :
+        <div
+            style={{
+                width: "90%",
                 margin: "30px auto",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                flexWrap: 'wrap'
-                }}>
-                {
-                    countries.length > 0 ?
-                        countries.map((country) => (
-                            <CountryCard
-                                name={country.name.common}
-                                flagImage={country.flags.png}
-                                flagAlt={country.flags.alt}
-                            />
-                        ))
-                        :
-                        <div>No data</div>
-                }
-            </div>
-
+                flexWrap: "wrap",
+            }}
+        >
+            {countries.map((country) => (
+                <CountryCard
+                    name={country.name.common}
+                    flagImage={country.flags.png}
+                    flagAlt={country.flags.alt}
+                />
+            ))}
+        </div>
     );
 }
 
