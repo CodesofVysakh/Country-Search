@@ -42,8 +42,9 @@ function Countries() {
                 });
         }
         catch{
-            setCountries([])
-            setIsLoading(false);
+            // setCountries([])
+                console.error("Internal Server Error");
+                setIsLoading(false);
         }
     }, []);
 
