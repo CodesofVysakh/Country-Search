@@ -28,8 +28,8 @@ function Countries() {
     const [countries, setCountries] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        fetch("https://restcountries.com/v3.1/all")
+    useEffect(async () => {
+        await fetch("https://restcountries.com/v3.1/all")
             .then((res) => res.json())
             .then((data) => {
                 setIsLoading(false);
