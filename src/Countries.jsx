@@ -29,22 +29,28 @@ function Countries() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(async () => {
-        await fetch("https://restcountries.com/v3.1/all")
-            .then((res) => res.json())
-            .then((data) => {
-                setIsLoading(false);
-                setCountries(data);
-            })
-            .catch((err) => {
-                setIsLoading(false);
-                console.error(err);
-            });
+        try{
+            await fetch("https://restcountries.com/v3.1/all")
+                .then((res) => res.json())
+                .then((data) => {
+                    setIsLoading(false);
+                    setCountries(data);
+                })
+                .catch((err) => {
+                    setIsLoading(false);
+                    console.error(err);
+                });
+        }
+        catch{
+            setCountries([])
+            setIsLoading(false);
+        }
     }, []);
 
     return (
-        // isLoading ?
-        // <div>Loading...</div>
-        // :
+        isLoading ?
+        <div>Loading...</div>
+        :
         <div
             style={{
                 width: "90%",
