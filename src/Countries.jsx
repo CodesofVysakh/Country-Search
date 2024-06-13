@@ -33,12 +33,12 @@ function Countries() {
             await fetch("https://restcountries.com/v3.1/all")
                 .then((res) => res.json())
                 .then((data) => {
-                    setIsLoading(false);
                     setCountries(data);
+                    setIsLoading(false);
                 })
                 .catch((err) => {
-                    setIsLoading(false);
                     console.error(err);
+                    setIsLoading(false);
                 });
         }
         catch{
