@@ -62,11 +62,11 @@ function Countries() {
                 flexWrap: "wrap",
             }}
         >
-            {countries.map((country) => (
+            {countries?.map((country) => (
                 <CountryCard
                     name={country.name.common}
-                    flagImage={country.flags.png}
-                    flagAlt={country.flags.alt}
+                    flagImage={country.flags.png ? country.flags.png : country.flags.svg}
+                    flagAlt={country.flags.alt ? country.flags.alt : `This is the flag of ${country.name.common}`}
                 />
             ))}
         </div>
